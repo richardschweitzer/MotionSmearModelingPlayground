@@ -55,7 +55,7 @@ p_sac_profiles <- ggplot(data = ISSP_sac_profiles_preagg, aes(x = sac_t_relative
   geom_line(data = ISSP_sac_profiles_agg, aes(x = sac_t_relative, y = v, 
                                               color = experiment_f, 
                                               group = experiment_f ), 
-            size = 1.5, alpha = 0.9) + 
+            size = 1.2, alpha = 0.9) + 
   geom_ribbon(data = ISSP_sac_profiles_agg, aes(x = sac_t_relative, y = v, 
                                                 ymin = v - v_se, ymax = v + v_se,
                                                 color = experiment_f, 
@@ -131,13 +131,13 @@ ISSP_sac_profiles_3 <- ISSP_sac_profiles_subj_3[ ,
 p_vel_hor_vert_comp <- ggplot(ISSP_sac_profiles_3, aes(x = sac_t_relative, y = vx, 
                                                        color = "in saccade direction")) + 
   geom_hline(yintercept = 0, linetype = "dotted") + 
-  geom_line(size = 2.5) + 
+  geom_line(size = 1) + 
   geom_ribbon(aes(ymin = vx - 2*vx_se, ymax = vx + 2*vx_se, 
                   fill = "in saccade direction"), 
               alpha = 0.3, color = NA) + 
   geom_line(data = ISSP_sac_profiles_3, aes(x = sac_t_relative, y = vy, 
                                             color = "orthogonal to sacc. direction"), 
-            size = 2.5) + 
+            size = 1) + 
   geom_ribbon(data = ISSP_sac_profiles_3, aes(ymin = vy - 2*vy_se, ymax = vy + 2*vy_se, 
                                               fill = "orthogonal to sacc. direction"), 
               alpha = 0.3, color = NA) + 
@@ -148,6 +148,9 @@ p_vel_hor_vert_comp <- ggplot(ISSP_sac_profiles_3, aes(x = sac_t_relative, y = v
   labs(x = "Time re saccade onset", y = "Eye velocity [dva/s]", 
        color = "Velocity component", fill = "Velocity component")
 p_vel_hor_vert_comp  
+
+# we can remove the huge data.frame now, as we have the aggregated data:
+rm(ISSP_sac_profiles)
 ```
 
 Cool, now we have something to work with.
@@ -655,6 +658,7 @@ for (stim_dur_ms_now in sort(test_these_stim_dur_ms)) {
 p_illustrate_motion_filters <- plot_grid(plotlist = illustrate_motion_filters, 
                                          nrow = 3, align = "hv", axis = "tblr")
 p_illustrate_motion_filters 
+rm(illustrate_motion_filters) # save working memory
 ```
 
 Indeed, a masking time course.

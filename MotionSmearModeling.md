@@ -176,6 +176,11 @@ p_vel_hor_vert_comp
 
 ![](MotionSmearModeling_files/figure-gfm/unnamed-chunk-4-3.png)<!-- -->
 
+``` r
+# we can remove the huge data.frame now, as we have the aggregated data:
+rm(ISSP_sac_profiles)
+```
+
 Cool, now we have something to work with.
 
 # The (extented) Kelly sensitivity model
@@ -869,6 +874,10 @@ p_illustrate_motion_filters
 ```
 
 ![](MotionSmearModeling_files/figure-gfm/unnamed-chunk-17-11.png)<!-- -->
+
+``` r
+rm(illustrate_motion_filters) # save working memory
+```
 
 Indeed, a masking time course.
 
