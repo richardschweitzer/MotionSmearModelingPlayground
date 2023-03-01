@@ -6,4 +6,4 @@ This repository contains exemplary code for the different approaches to the mode
 
 All functions are implemented in R. The markdown document [MotionSmearModeling.md](../main/MotionSmearModeling.md) provides a walkthrough how to apply the various functions. For methodological details, please refer to the paper. 
 
-![Example results](../main/SLM_model_ver1_files/figure-gfm/unnamed-chunk-17-11.png)
+![Example results](../main/MotionSmearModeling_files/figure-gfm/unnamed-chunk-17-11.png)
