@@ -59,7 +59,7 @@ p_sac_profiles <- ggplot(data = ISSP_sac_profiles_preagg, aes(x = sac_t_relative
   geom_line(data = ISSP_sac_profiles_agg, aes(x = sac_t_relative, y = v, 
                                               color = experiment_f, 
                                               group = experiment_f ), 
-            size = 1.5, alpha = 0.9) + 
+            size = 1.2, alpha = 0.9) + 
   geom_ribbon(data = ISSP_sac_profiles_agg, aes(x = sac_t_relative, y = v, 
                                                 ymin = v - v_se, ymax = v + v_se,
                                                 color = experiment_f, 
@@ -152,13 +152,13 @@ ISSP_sac_profiles_3 <- ISSP_sac_profiles_subj_3[ ,
 p_vel_hor_vert_comp <- ggplot(ISSP_sac_profiles_3, aes(x = sac_t_relative, y = vx, 
                                                        color = "in saccade direction")) + 
   geom_hline(yintercept = 0, linetype = "dotted") + 
-  geom_line(size = 2.5) + 
+  geom_line(size = 1) + 
   geom_ribbon(aes(ymin = vx - 2*vx_se, ymax = vx + 2*vx_se, 
                   fill = "in saccade direction"), 
               alpha = 0.3, color = NA) + 
   geom_line(data = ISSP_sac_profiles_3, aes(x = sac_t_relative, y = vy, 
                                             color = "orthogonal to sacc. direction"), 
-            size = 2.5) + 
+            size = 1) + 
   geom_ribbon(data = ISSP_sac_profiles_3, aes(ymin = vy - 2*vy_se, ymax = vy + 2*vy_se, 
                                               fill = "orthogonal to sacc. direction"), 
               alpha = 0.3, color = NA) + 
@@ -262,12 +262,12 @@ for (row_i in 2:nrow(ISSP_sac_profiles_3)) {
   dt_now[ , vy := vy_now]
   dt_now[ , v := sqrt(vx^2 + vy^2)]
   dt_now[ , final_gabor_vel := kelly_sens_ori_vel_sf(gabor_ori = Ori, gabor_sf = SF, 
-                                          global_dir = 90, 
+                                          global_dir = 0, 
                                           global_vel = vx_now, global_orth_vel = vy_now, 
                                           return_final_vel = TRUE)]
   dt_now[ , final_gabor_tf := final_gabor_vel * SF]
   dt_now[ , sens := kelly_sens_ori_vel_sf(gabor_ori = Ori, gabor_sf = SF, 
-                                          global_dir = 90, 
+                                          global_dir = 0, 
                                           global_vel = vx_now, global_orth_vel = vy_now, 
                                           return_final_vel = FALSE)]
   intra_sac_sensitivities <- rbind(intra_sac_sensitivities, dt_now)

@@ -6,7 +6,8 @@ gabor_ori_vel <- function(gabor_ori, global_dir, global_vel) {
   # global_dir is the overall direction of the movement at global_vel
   require(pracma)
   # according to the equation (Scarfe & Johnston, 2011, Eq. 1): Sc = Sg * cos(Oc - Og)
-  gabor_individual_drift_vel = global_vel * cos(deg2rad(gabor_ori) - deg2rad(global_dir) )
+  # here, however, we need sine because we want velocity to be zero when differences of angles are zero
+  gabor_individual_drift_vel = global_vel * sin(deg2rad(gabor_ori) - deg2rad(global_dir) )
   return(gabor_individual_drift_vel)
 }
 

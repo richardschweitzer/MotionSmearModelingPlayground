@@ -221,12 +221,12 @@ for (row_i in 2:nrow(ISSP_sac_profiles_3)) {
   dt_now[ , vy := vy_now]
   dt_now[ , v := sqrt(vx^2 + vy^2)]
   dt_now[ , final_gabor_vel := kelly_sens_ori_vel_sf(gabor_ori = Ori, gabor_sf = SF, 
-                                          global_dir = 90, 
+                                          global_dir = 0, 
                                           global_vel = vx_now, global_orth_vel = vy_now, 
                                           return_final_vel = TRUE)]
   dt_now[ , final_gabor_tf := final_gabor_vel * SF]
   dt_now[ , sens := kelly_sens_ori_vel_sf(gabor_ori = Ori, gabor_sf = SF, 
-                                          global_dir = 90, 
+                                          global_dir = 0, 
                                           global_vel = vx_now, global_orth_vel = vy_now, 
                                           return_final_vel = FALSE)]
   intra_sac_sensitivities <- rbind(intra_sac_sensitivities, dt_now)
